@@ -1,0 +1,31 @@
+{%- extends "base.html" %}
+
+{% block content %}
+
+<div class="row mt-4">
+  <div class="col col-md-6 offset-md-3 alert alert-primary bg-danger text-white text-center">
+    <span class="h1">Cipher-Decipher</span>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col col-md-6 offset-md-3 text-center">
+      <form action="/decipher" method="post">
+          <div class="row mb-3">
+            <div class="col col-md-8 offset-md-2 text-center">
+              <span>Password</span><br>
+              <input type="text" class="form-control" name="password" style="width:100%;" value="{{cipherData.password}}" required />
+            </div>
+          </div>
+          <span>Enter Encrypted Message</span><br>
+          <textarea name="encryptedMessage" class="form-control" rows="5" style="width:100%;">{{cipherData.encrypted}}</textarea>
+          <button class="btn btn-danger my-3">Decrypt</button>
+          <textarea rows="5" class="form-control" style="width:100%;">{{cipherData.decrypted}}</textarea><br>
+          {% if cipherData.error != "" %}
+          <span class="badge badge-danger">{{cipherData.error}}</span>
+          {% endif %}
+      </form>
+    </div>
+</div>
+{%- endblock %}
