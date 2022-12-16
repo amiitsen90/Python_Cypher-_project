@@ -1,0 +1,48 @@
+U
+    ·w—câ	  ã                   @   sÄ   d dl Z d dl mZmZ d dlmZ d dlmZ d dl mZ d dl	m
+Z
+m
+Z
+ eeƒZ
+ee
+ƒZe
+jd dd	gd
+d
+d„ ƒZe
+jd
+dd	gd
+dd„ ƒZe
+jdd	gd
+dd„ ƒZe
+jdd	gd
+dd„ ƒZdS )é    N)ÚFlaskÚrender_template)Ú
+Bootstrap5)ÚAES)ÚSHA256)ÚpadÚunpadú/ÚGETÚPOST)Ú methodsc                  C   s   dddddœ} t d| dS )NÚ ©Z	encryptedZ	decryptedÚpasswordÚerrorú
+index.html©Ú
+cipherData©r   r   © r   ú1C:\Users\HP\PycharmProjects\CipherDecipher\app.pyÚindex
+   s    r   z /index2c                  C   s   dddddœ} t d| dS )Nr
+   r   ú
+index2.htmlr   r   r   r   r   r   Úindex2   s    r   z /cipherc               
+   C   sà   z„t jj d¡} t jj d¡d kr&dnt jj d¡}t |  d¡¡  ¡ }t |tj	¡}d}| 
+t
+| d¡|ƒ¡}| ¡ || dd œ}W nN t
+k
+rÒ }  z0t jj d¡t jj d¡t jj d¡| d œ}W 5 d } ~ X Y nX td	|d
+S )
+Nr   ÚoriginalMessagezOriginal Messageúutf-8é   r
+   r   ÚencryptedMessager   r   )ÚflaskÚ requestÚvaluesÚgetr   ÚnewÚencodeÚdigestr   ÚMODE_ECBZ encryptr    ÚhexÚ	Exceptionr   )r   Ú
+decryptedTextÚ hashKeyÚcipherÚ
+BLOCK_SIZEÚ
+encryptedTextr   Úer   r   r   r*      s    $>r*   z	/decipherc               
+   C   sâ   z†t jj d¡} t jj d¡d kr&dnt jj d¡}t |  d¡¡  ¡ }t |tj	¡}d}t
+| 
+t 
+|¡¡|ƒ d¡}||| dd œ}W nN tk
+rÔ }  z0t jj d¡t jj d¡t jj d¡| d œ}W 5 d } ~ X Y nX td	|d
+S )
+Nr   r   zEncrypted Messager   r   r
+   r   r   r   r   )r   r   r    r!   r   r"   r#   r$   r   r%   r   Z decryptÚbytesÚ fromhexÚdecoder'   r   )r   r,   r)   Údecipherr+   r(   r   r-   r   r   r   r1   $   s    $>r1   )r   r   r   Zflask_bootstrapr   Z
+Crypto.Cipherr   Z
+Crypto.Hashr   ZCrypto.Util.Paddingr    r   Ú__name__ÚappZ	bootstrapÚrouter   r   r*   r1   r   r   r   r   Ú<module>   s   
+
+
+
